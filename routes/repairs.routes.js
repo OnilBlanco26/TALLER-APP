@@ -6,7 +6,6 @@ const {
   deleteRepair,
   findRepairs,
   findRepair,
-  findRepairEmail,
 } = require('../controllers/repairs.controllers');
 
 const router = Router();
@@ -14,8 +13,6 @@ const router = Router();
 router.get('/', findRepairs);
 
 router.get('/:id', findRepair);
-
-router.get('/:email', findRepairEmail);
 
 router.post('/', createRepair);
 
