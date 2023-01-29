@@ -1,3 +1,5 @@
+// Descripción: Este fichero contiene el modelo de la tabla de reparaciones de la base de datos.
+
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/db');
 

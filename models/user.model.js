@@ -1,3 +1,4 @@
+// Este fichero define el modelo de datos de la tabla 'users' de la base de datos
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/db');
 
