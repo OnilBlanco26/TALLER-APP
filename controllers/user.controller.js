@@ -1,5 +1,6 @@
 const User = require('../models/user.model');
 
+// en esta funcion se hace la consulta a la base de datos para obtener todos los usuarios
 const findUsers = async (req, res) => {
   try {
     const users = await User.findAll({
@@ -22,6 +23,7 @@ const findUsers = async (req, res) => {
   }
 };
 
+// en esta funcion se hace la consulta a la base de datos para obtener un usuario en especifico por su id
 const findUser = async (req, res) => {
   try {
     const { id } = req.params;
@@ -55,6 +57,7 @@ const findUser = async (req, res) => {
   }
 };
 
+// en esta funcion se hace la consulta a la base de datos para crear un usuario
 const createUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -79,6 +82,7 @@ const createUser = async (req, res) => {
   }
 };
 
+// en esta funcion se hace la consulta a la base de datos para actualizar un usuario
 const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
@@ -118,6 +122,7 @@ const updateUser = async (req, res) => {
   }
 };
 
+// en esta funcion se hace la consulta a la base de datos para eliminar un usuario
 const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
@@ -150,6 +155,7 @@ const deleteUser = async (req, res) => {
   }
 };
 
+// se exportan las funciones para poder ser utilizadas en otro archivo
 module.exports = {
   findUsers,
   findUser,
