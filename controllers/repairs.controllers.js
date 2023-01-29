@@ -1,5 +1,6 @@
 const Repairs = require('../models/repairs.model');
 
+// en esta funcion se busca un arreglo de reparaciones pendientes de un usuario en especifico por su id o por su email
 const findRepair = async (req, res) => {
   try {
     const id = req.params.id;
@@ -30,6 +31,7 @@ const findRepair = async (req, res) => {
   }
 };
 
+// en esta funcion se busca un arreglo de reparaciones pendientes de todos los usuarios
 const findRepairs = async (req, res) => {
   try {
     const repairs = await Repairs.findAll({
@@ -58,34 +60,7 @@ const findRepairs = async (req, res) => {
   }
 };
 
-const findRepairEmail = async (req, res) => {
-  try {
-    const repair = await Repairs.findOne({
-      where: {
-        email: req.params.email.toLowerCase(),
-        status: 'pending',
-      },
-    });
-
-    if (!repair) {
-      return res.status(404).json({
-        ok: false,
-        msg: 'No repairs pending',
-      });
-    }
-
-    res.json({
-      ok: true,
-      repair,
-    });
-  } catch (error) {
-    res.status(500).json({
-      ok: false,
-      msg: 'Server error',
-      error,
-    });
-  }
-};
+// en esta funcion se crea una nueva reparacion
 const createRepair = async (req, res) => {
   const { date, userId } = req.body;
 
@@ -108,6 +83,7 @@ const createRepair = async (req, res) => {
   }
 };
 
+// en esta funcion se actualiza el estado de una reparacion
 const updateRepair = async (req, res) => {
   const { id } = req.params;
 
@@ -136,6 +112,7 @@ const updateRepair = async (req, res) => {
   }
 };
 
+// en esta funcion se elimina una reparacion
 const deleteRepair = async (req, res) => {
   const { id } = req.params;
 
@@ -169,11 +146,11 @@ const deleteRepair = async (req, res) => {
   }
 };
 
+// exportamos las funciones
 module.exports = {
   findRepairs,
   findRepair,
   createRepair,
   updateRepair,
   deleteRepair,
-  findRepairEmail,
 };
